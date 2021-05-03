@@ -86,6 +86,7 @@ namespace WhiteFilms.API.Controllers
             }
 
             var account = _accountsService.Get(payload.Name);
+
             // 隐藏关键信息
             account.Password = "";
             account.Salt = "";
@@ -108,10 +109,14 @@ namespace WhiteFilms.API.Controllers
                 return NotFound(new Response<string>(new UsernameOrPasswordError()) {resultBody = ""});
             }
 
+            // 防止越权修改
             var old_password = account.Password;
             var old_security_questions = account.SecurityQuestions;
+            var old_permission = account.Permission;
             // 应用更新
             accountUpdates.ApplyTo(account);
+
+            account.Permission = old_permission;
             _accountsService.Update(username, account);
 
             // 只有密码正确,才能修改密码

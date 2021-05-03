@@ -9,6 +9,12 @@ namespace WhiteFilms.API.Models
 {
     public class Account
     {
+        public Account()
+        {
+            // 默认为user
+            Permission = Permissions.User;
+        }
+
         /* 用户账户的数据模型 */
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

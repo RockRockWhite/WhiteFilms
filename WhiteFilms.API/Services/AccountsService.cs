@@ -3,9 +3,9 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using MongoDB.Driver;
-using  WhiteFilms.API.Models;
+using WhiteFilms.API.Models;
 
-namespace  WhiteFilms.API.Services
+namespace WhiteFilms.API.Services
 {
     public class AccountsService
     {
@@ -54,11 +54,11 @@ namespace  WhiteFilms.API.Services
             _accounts.ReplaceOne(account => account.Username == username, newAccount);
         }
 
-        public void Update(string username, string tallyId, Permissions permission)
+        public void Update(string username, Permissions permission)
         {
-            /* 更新用户拥有的记账本 */
+            /* 更新用户权限 */
             var account = Get(username);
-            account.Tallybooks[tallyId] = permission;
+            account.Permission = permission;
             Update(username, account);
         }
 
