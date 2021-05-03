@@ -13,7 +13,7 @@ namespace WhiteFilms.API.Models
         /* 电影的数据类型 */
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; } // 电影Id
+        public string Id { get; set; } // 电影Id
 
         [Required] public string[] Directors { get; set; }
         [Required] public string[] ScriptWriter { get; set; }

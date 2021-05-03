@@ -45,3 +45,6 @@ C:\Users\White\source\WhiteFilms\WhiteFilms.API\obj\Debug\net5.0\WhiteFilms.API.
 C:\Users\White\source\WhiteFilms\WhiteFilms.API\obj\Debug\net5.0\ref\WhiteFilms.API.dll
 C:\Users\White\source\WhiteFilms\WhiteFilms.API\obj\Debug\net5.0\WhiteFilms.API.pdb
 C:\Users\White\source\WhiteFilms\WhiteFilms.API\obj\Debug\net5.0\WhiteFilms.API.genruntimeconfig.cache
+C:\Users\White\source\WhiteFilms\WhiteFilms.API\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\White\source\WhiteFilms\WhiteFilms.API\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\White\source\WhiteFilms\WhiteFilms.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.Newtonsoft.dll

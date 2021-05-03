@@ -13,8 +13,7 @@ namespace WhiteFilms.API.Services
             /* 构造函数 获得数据库Collection */
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
-
-            _films = database.GetCollection<Film>(settings.WhiteFilmsCollectionName);
+            _films = database.GetCollection<Film>(settings.FilmsCollectionName);
         }
 
         // CRUD

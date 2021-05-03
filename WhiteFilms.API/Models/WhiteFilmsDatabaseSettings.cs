@@ -6,7 +6,7 @@
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
         public string AccountCollectionName { get; set; }
-        public string WhiteFilmsCollectionName { get; set; }
+        public string FilmsCollectionName { get; set; }
     }
 
     public interface IWhiteFilmsDatabaseSettings
@@ -15,6 +15,6 @@
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
         public string AccountCollectionName { get; set; }
-        public string WhiteFilmsCollectionName { get; set; }
+        public string FilmsCollectionName { get; set; }
     }
 }

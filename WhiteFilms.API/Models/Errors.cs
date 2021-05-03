@@ -78,16 +78,4 @@
         public int errorCode { get; set; }
         public string errorMsg { get; set; }
     }
-
-    public class TallybookMustHaveOnlyOwnerError : IError
-    {
-        public TallybookMustHaveOnlyOwnerError()
-        {
-            errorCode = 203;
-            errorMsg = "Tallybook must have only owner.";
-        }
-
-        public int errorCode { get; set; }
-        public string errorMsg { get; set; }
-    }
 }

@@ -42,7 +42,7 @@ namespace WhiteFilms.API.Controllers
             }
 
             // 验证权限
-            if (_accountsService.GetPermission(payload.Id) != Permissions.Administrator)
+            if (_accountsService.GetPermission(payload.Name) != Permissions.Administrator)
             {
                 return BadRequest(new Response<string>(new PermissionDeniedError()) {resultBody = ""});
             }
@@ -92,7 +92,7 @@ namespace WhiteFilms.API.Controllers
                 return BadRequest(new Response<string>(new InvalidToken()) {resultBody = ""});
             }
 
-            if (_accountsService.GetPermission(payload.Id) != Permissions.Administrator)
+            if (_accountsService.GetPermission(payload.Name) != Permissions.Administrator)
             {
                 return BadRequest(new Response<string>(new PermissionDeniedError()) {resultBody = ""});
             }
@@ -126,7 +126,7 @@ namespace WhiteFilms.API.Controllers
                 return BadRequest(new Response<string>(new InvalidToken()) {resultBody = ""});
             }
 
-            if (_accountsService.GetPermission(payload.Id) != Permissions.Administrator)
+            if (_accountsService.GetPermission(payload.Name) != Permissions.Administrator)
             {
                 return BadRequest(new Response<string>(new PermissionDeniedError()) {resultBody = ""});
             }
