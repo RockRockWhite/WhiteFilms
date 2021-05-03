@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteFilms.API", "WhiteFilms.API\WhiteFilms.API.csproj", "{8CF9BC77-7109-467C-A2FA-508BC806DAA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteFilms.Test", "WhiteFilms.Test\WhiteFilms.Test.csproj", "{526C0420-1762-4241-9130-551FD270B638}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{8CF9BC77-7109-467C-A2FA-508BC806DAA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CF9BC77-7109-467C-A2FA-508BC806DAA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CF9BC77-7109-467C-A2FA-508BC806DAA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{526C0420-1762-4241-9130-551FD270B638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{526C0420-1762-4241-9130-551FD270B638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{526C0420-1762-4241-9130-551FD270B638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{526C0420-1762-4241-9130-551FD270B638}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
