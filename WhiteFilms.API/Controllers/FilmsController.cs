@@ -13,22 +13,22 @@ namespace WhiteFilms.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TallybooksController : ControllerBase
+    public class FilmsController : ControllerBase
     {
-        private readonly TallybooksService _tallybooksService;
+        private readonly FilmsService _filmsService;
         private readonly TokensService _tokensService;
         private readonly AccountsService _accountsService;
 
-        public TallybooksController(TallybooksService tallybooksService, TokensService tokensService,
+        public FilmsController(FilmsService filmsService, TokensService tokensService,
             AccountsService accountsService)
         {
-            _tallybooksService = tallybooksService;
+            _filmsService = filmsService;
             _tokensService = tokensService;
             _accountsService = accountsService;
         }
 
         [HttpPost]
-        public ActionResult CreateNewTallybook([FromBody] Tallybook tallybook, [FromQuery] string Authorization)
+        public ActionResult CreateNewFilm([FromBody] Film film, [FromQuery] string Authorization)
         {
             // 验证token是否合法 非法将抛出异常
             Payload payload = null;
@@ -40,16 +40,13 @@ namespace WhiteFilms.API.Controllers
             {
                 return BadRequest(new Response<string>(new InvalidToken()) {resultBody = ""});
             }
+            // 验证权限 TODO
 
             // 将账本写入数据库
-            _tallybooksService.Create(tallybook);
-            _tallybooksService.Update(tallybook.Id, payload.Name, Permissions.Owner);
-            // 记录用户拥有账本
-            _accountsService.Update(payload.Name, tallybook.Id, Permissions.Owner);
-
+            _filmsService.Create(film);
 
             return Ok(new Response<Dictionary<string, string>>(new Ok())
-                {resultBody = new Dictionary<string, string>() {["id"] = tallybook.Id}});
+                {resultBody = new Dictionary<string, string>() {["id"] = film.Id}});
         }
 
         [HttpGet("{id}")]
