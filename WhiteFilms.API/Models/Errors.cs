@@ -1,4 +1,4 @@
-﻿namespace  WhiteFilms.API.Models
+﻿namespace WhiteFilms.API.Models
 {
     public interface IError
     {
@@ -55,12 +55,12 @@
         public string errorMsg { get; set; }
     }
 
-    public class TallybookIdError : IError
+    public class FilmIdError : IError
     {
-        public TallybookIdError()
+        public FilmIdError()
         {
             errorCode = 201;
-            errorMsg = "Tallybook is not existed.";
+            errorMsg = "Film is not existed.";
         }
 
         public int errorCode { get; set; }
@@ -90,5 +90,4 @@
         public int errorCode { get; set; }
         public string errorMsg { get; set; }
     }
-    
 }

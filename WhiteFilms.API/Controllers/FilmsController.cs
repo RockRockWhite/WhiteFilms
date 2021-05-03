@@ -40,7 +40,12 @@ namespace WhiteFilms.API.Controllers
             {
                 return BadRequest(new Response<string>(new InvalidToken()) {resultBody = ""});
             }
-            // 验证权限 TODO
+
+            // 验证权限
+            if (_accountsService.GetPermission(payload.Id) != Permissions.Administrator)
+            {
+                return BadRequest(new Response<string>(new PermissionDeniedError()) {resultBody = ""});
+            }
 
             // 将账本写入数据库
             _filmsService.Create(film);
@@ -50,45 +55,30 @@ namespace WhiteFilms.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult GetTallybook(string id, [FromQuery] string Authorization)
+        public ActionResult GetFilm(string id)
         {
-            /* 由id获得记账本 */
-            var tallybook = _tallybooksService.Get(id);
+            /* 由id获得电影 */
 
-            if (tallybook == null)
+            var film = _filmsService.Get(id);
+
+            if (film == null)
             {
-                return NotFound(new Response<string>(new TallybookIdError()) {resultBody = ""});
+                return NotFound(new Response<string>(new FilmIdError()) {resultBody = ""});
             }
 
-            // 验证用户权限
-            Payload payload = null;
-            try
-            {
-                payload = _tokensService.ValidateToken(Authorization.Replace("Bearer ", ""));
-            }
-            catch (Exception e)
-            {
-                return BadRequest(new Response<string>(new InvalidToken()) {resultBody = ""});
-            }
-
-            if (_tallybooksService.GetPermission(id, payload.Name) == Permissions.Denier)
-            {
-                return BadRequest(new Response<string>(new PermissionDeniedError()) {resultBody = ""});
-            }
-
-            return Ok(new Response<Tallybook>(new Ok()) {resultBody = tallybook});
+            return Ok(new Response<Film>(new Ok()) {resultBody = film});
         }
 
         [HttpPatch("{id}")]
-        public ActionResult PatchTallybook(string id, [FromQuery] string Authorization,
-            [FromBody] JsonPatchDocument<Tallybook> tallybookUpdates)
+        public ActionResult PatchFilm(string id, [FromQuery] string Authorization,
+            [FromBody] JsonPatchDocument<Film> filmUpdates)
         {
             /* 修改记账本 此操作无法修改记账本权限 */
-            var tallybook = _tallybooksService.Get(id);
+            var film = _filmsService.Get(id);
 
-            if (tallybook == null)
+            if (film == null)
             {
-                return NotFound(new Response<string>(new TallybookIdError()) {resultBody = ""});
+                return NotFound(new Response<string>(new FilmIdError()) {resultBody = ""});
             }
 
             // 验证用户权限
@@ -102,113 +92,27 @@ namespace WhiteFilms.API.Controllers
                 return BadRequest(new Response<string>(new InvalidToken()) {resultBody = ""});
             }
 
-            if (_tallybooksService.GetPermission(id, payload.Name) == Permissions.Denier ||
-                _tallybooksService.GetPermission(id, payload.Name) == Permissions.Reader)
+            if (_accountsService.GetPermission(payload.Id) != Permissions.Administrator)
             {
                 return BadRequest(new Response<string>(new PermissionDeniedError()) {resultBody = ""});
             }
 
-            // 防止Editor用户越权修改权限
-            var permissions = tallybook.Permissions;
-            tallybookUpdates.ApplyTo(tallybook);
+            filmUpdates.ApplyTo(film);
 
-            _tallybooksService.Update(id, tallybook);
-
+            _filmsService.Update(id, film);
 
             return Ok(new Response<string>(new Ok()) {resultBody = ""});
         }
-
-        [HttpPatch("{id}/Permissions/Owner")]
-        public ActionResult PatchTallybook(string id, string Authorization, string reOwnerTo)
-        {
-            /* 将记账本的权限移交给新的用户 */
-            var tallybook = _tallybooksService.Get(id);
-
-            if (tallybook == null)
-            {
-                return NotFound(new Response<string>(new TallybookIdError()) {resultBody = ""});
-            }
-
-            // 验证用户权限
-            Payload payload = null;
-            try
-            {
-                payload = _tokensService.ValidateToken(Authorization.Replace("Bearer ", ""));
-            }
-            catch (Exception e)
-            {
-                return BadRequest(new Response<string>(new InvalidToken()) {resultBody = ""});
-            }
-
-            if (_tallybooksService.GetPermission(id, payload.Name) != Permissions.Owner)
-            {
-                return BadRequest(new Response<string>(new PermissionDeniedError()) {resultBody = ""});
-            }
-
-            // 修改用户权限信息
-            _accountsService.Update(payload.Name, id, Permissions.Editer);
-            _accountsService.Update(reOwnerTo, id, Permissions.Owner);
-
-            // 修改记账本权限信息
-            _tallybooksService.Update(id, payload.Name, Permissions.Editer);
-            _tallybooksService.Update(id, reOwnerTo, Permissions.Owner);
-
-            return Ok(new Response<string>(new Ok()) {resultBody = ""});
-        }
-
-        [HttpPatch("{id}/Permissions/{username}")]
-        public ActionResult PatchTallybook(string id, string Authorization, string username,
-            [FromQuery] Permissions permission)
-        {
-            /* 改变某个用户的记账本权限 */
-            var tallybook = _tallybooksService.Get(id);
-
-            if (tallybook == null)
-            {
-                return NotFound(new Response<string>(new TallybookIdError()) {resultBody = ""});
-            }
-
-            // 验证用户权限
-            Payload payload = null;
-            try
-            {
-                payload = _tokensService.ValidateToken(Authorization.Replace("Bearer ", ""));
-            }
-            catch (Exception e)
-            {
-                return BadRequest(new Response<string>(new InvalidToken()) {resultBody = ""});
-            }
-
-            if (_tallybooksService.GetPermission(id, payload.Name) != Permissions.Owner)
-            {
-                return BadRequest(new Response<string>(new PermissionDeniedError()) {resultBody = ""});
-            }
-
-            // 不允许没有Owner 也不允许多个Owner
-            if (_tallybooksService.GetPermission(id, username) == Permissions.Owner || permission == Permissions.Owner)
-            {
-                return BadRequest(new Response<string>(new TallybookMustHaveOnlyOwnerError()) {resultBody = ""});
-            }
-
-            // 修改用户权限信息
-            _accountsService.Update(username, id, permission);
-
-            // 修改记账本权限信息
-            _tallybooksService.Update(id, username, permission);
-
-            return Ok(new Response<string>(new Ok()) {resultBody = ""});
-        }
-
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteTallybook(string id, [FromQuery] string Authorization)
+        public ActionResult DeleteFilm(string id, [FromQuery] string Authorization)
         {
             /* 由id获得记账本 */
-            var tallybook = _tallybooksService.Get(id);
+            var film = _filmsService.Get(id);
 
-            if (tallybook == null)
+            if (film == null)
             {
-                return NotFound(new Response<string>(new TallybookIdError()) {resultBody = ""});
+                return NotFound(new Response<string>(new FilmIdError()) {resultBody = ""});
             }
 
             // 验证用户权限
@@ -222,13 +126,12 @@ namespace WhiteFilms.API.Controllers
                 return BadRequest(new Response<string>(new InvalidToken()) {resultBody = ""});
             }
 
-            if (_tallybooksService.GetPermission(id, payload.Name) == Permissions.Denier ||
-                _tallybooksService.GetPermission(id, payload.Name) == Permissions.Reader)
+            if (_accountsService.GetPermission(payload.Id) != Permissions.Administrator)
             {
                 return BadRequest(new Response<string>(new PermissionDeniedError()) {resultBody = ""});
             }
 
-            _tallybooksService.Delete(id);
+            _filmsService.Delete(id);
 
             return Ok(new Response<string>(new Ok()) {resultBody = ""});
         }

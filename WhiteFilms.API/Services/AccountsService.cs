@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MongoDB.Driver;
 using WhiteFilms.API.Models;
 
@@ -47,6 +48,18 @@ namespace WhiteFilms.API.Services
 
         public bool CheckPassword(Account account, string password) =>
             _passwordsService.CheckSaltedHash(account.Salt, password, account.Password);
+
+        public Permissions GetPermission(string username)
+        {
+            /* 由用名获得用户权限 */
+            var _account = _accounts.Find(account => account.Username == username).FirstOrDefault();
+            if (_account == null)
+            {
+                return Permissions.User;
+            }
+
+            return _account.Permission;
+        }
 
 
         public void Update(string username, Account newAccount)
