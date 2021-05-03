@@ -69,6 +69,15 @@ namespace WhiteFilms.API.Controllers
             return Ok(new Response<Film>(new Ok()) {resultBody = film});
         }
 
+        [HttpGet]
+        public ActionResult GetFilm([FromQuery] int page, [FromQuery] int limit)
+        {
+            /* 分页获得电影 */
+
+            var films = _filmsService.Get(page, limit);
+            return Ok(new Response<IQueryable<Film>>(new Ok()) {resultBody = films});
+        }
+
         [HttpPatch("{id}")]
         public ActionResult PatchFilm(string id, [FromQuery] string Authorization,
             [FromBody] JsonPatchDocument<Film> filmUpdates)
@@ -103,6 +112,7 @@ namespace WhiteFilms.API.Controllers
 
             return Ok(new Response<string>(new Ok()) {resultBody = ""});
         }
+
 
         [HttpDelete("{id}")]
         public ActionResult DeleteFilm(string id, [FromQuery] string Authorization)

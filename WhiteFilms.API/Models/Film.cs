@@ -10,6 +10,10 @@ namespace WhiteFilms.API.Models
 {
     public class Film
     {
+        public Film()
+        {
+            Time = DateTime.Now;
+        }
         /* 电影的数据类型 */
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

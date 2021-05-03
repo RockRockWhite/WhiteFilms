@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Identity;
 using MongoDB.Driver;
 using WhiteFilms.API.Models;
 
@@ -25,6 +26,9 @@ namespace WhiteFilms.API.Services
         }
 
         public Film Get(string id) => _films.Find(film => film.Id == id).FirstOrDefault();
+
+        public IQueryable<Film> Get(int page, int limit = 20) => _films.AsQueryable<Film>()
+            .OrderBy(film => film.Time).Skip(limit * (page - 1)).Take(20);
 
         public void Update(string id, Film newFilm) =>
             /* 更新记账本信息 */
