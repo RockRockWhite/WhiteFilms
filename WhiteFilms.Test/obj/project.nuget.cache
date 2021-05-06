@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "H9EQ2nQ4N+Zfk8ulA0op7smx5Rhy6lYUZX+gcnTT25Saiu4sWnLDhuhydTkmFI2LIDuIA7rJsi6dbgSEkp1NKA==",
+  "dgSpecHash": "RtdXRH56IGlitK3AFm2CG3KmN7fp4fgLlhnGKpEDj7caAK8KMTE4bJkb4ewxbpY5uc4fbc+2LcXMea7JcCP4Xw==",
   "success": true,
   "projectFilePath": "C:\\Users\\White\\source\\WhiteFilms\\WhiteFilms.Test\\WhiteFilms.Test.csproj",
   "expectedPackageFiles": [
@@ -34,6 +34,7 @@
     "C:\\Users\\White\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\White\\.nuget\\packages\\microsoft.testplatform.objectmodel\\16.7.1\\microsoft.testplatform.objectmodel.16.7.1.nupkg.sha512",
     "C:\\Users\\White\\.nuget\\packages\\microsoft.testplatform.testhost\\16.7.1\\microsoft.testplatform.testhost.16.7.1.nupkg.sha512",
+    "C:\\Users\\White\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.13\\microsoft.visualstudio.azure.containers.tools.targets.1.10.13.nupkg.sha512",
     "C:\\Users\\White\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\White\\.nuget\\packages\\mongodb.bson\\2.13.0-beta1\\mongodb.bson.2.13.0-beta1.nupkg.sha512",
     "C:\\Users\\White\\.nuget\\packages\\mongodb.driver\\2.13.0-beta1\\mongodb.driver.2.13.0-beta1.nupkg.sha512",

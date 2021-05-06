@@ -13,22 +13,19 @@ namespace WhiteFilms.Test
 {
     public class Startup
     {
-        public Startup()
+        public void ConfigureHost(IHostBuilder hostBuilder)
         {
-            /* 构造configuration */
             var environmentName = Environment.GetEnvironmentVariable("Hosting:Environment");
-            var configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
-                .AddJsonFile($"appsettings.{environmentName}.json", true)
-                .AddEnvironmentVariables()
-                .Build();
-            Configuration = configuration;
+            hostBuilder.ConfigureHostConfiguration(builder => builder.AddJsonFile("appsettings.json")
+                .AddJsonFile($"appsettings.{environmentName}.json", true));
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; set; }
 
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services, HostBuilderContext hostBuilderContext)
         {
+            Configuration = hostBuilderContext.Configuration;
+
             services.Configure<WhiteFilmsDatabaseSettings>(
                 Configuration.GetSection(nameof(WhiteFilmsDatabaseSettings)));
             services.AddSingleton<WhiteFilmsDatabaseSettings>(provider =>

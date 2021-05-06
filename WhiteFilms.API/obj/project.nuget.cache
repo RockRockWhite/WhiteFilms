@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5hbLteNnfG4xMFqg8SF4e2vhiDV3GqouFaMe36rvtNI/+MrnBdcPBF+xoPICbPvSXY561w7C+NA/vH3XDSSUbg==",
+  "dgSpecHash": "3HpIDx0MyU45HK8ljr4aTNOgbTzxR23ou12OERVjFxHCLg7XYXyO3pSydBrv3ZemNQa7tqRq+Dn5fRQUWjnAHg==",
   "success": true,
   "projectFilePath": "C:\\Users\\White\\source\\WhiteFilms\\WhiteFilms.API\\WhiteFilms.API.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\White\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.11.0\\microsoft.identitymodel.tokens.6.11.0.nupkg.sha512",
     "C:\\Users\\White\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Users\\White\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\White\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.13\\microsoft.visualstudio.azure.containers.tools.targets.1.10.13.nupkg.sha512",
     "C:\\Users\\White\\.nuget\\packages\\mongodb.bson\\2.13.0-beta1\\mongodb.bson.2.13.0-beta1.nupkg.sha512",
     "C:\\Users\\White\\.nuget\\packages\\mongodb.driver\\2.13.0-beta1\\mongodb.driver.2.13.0-beta1.nupkg.sha512",
     "C:\\Users\\White\\.nuget\\packages\\mongodb.driver.core\\2.13.0-beta1\\mongodb.driver.core.2.13.0-beta1.nupkg.sha512",

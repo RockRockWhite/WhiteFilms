@@ -4,12 +4,12 @@
     &lt;TestId&gt;xUnit::526C0420-1762-4241-9130-551FD270B638::net5.0::WhiteFilms.Test.AccountsControllerTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=aaf23ff1_002Ddac6_002D4619_002D80ab_002Db543622e18e5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="AccountsControllerTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=aaf23ff1_002Ddac6_002D4619_002D80ab_002Db543622e18e5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="AccountsControllerTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::526C0420-1762-4241-9130-551FD270B638::net5.0::WhiteFilms.Test.AccountsControllerTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b52741ac_002Dc7b4_002D4c85_002Db71e_002D64b5b9bfa6be/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetAccountTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b52741ac_002Dc7b4_002D4c85_002Db71e_002D64b5b9bfa6be/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetAccountTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::526C0420-1762-4241-9130-551FD270B638::net5.0::WhiteFilms.Test.AccountsControllerTest.GetAccountTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;

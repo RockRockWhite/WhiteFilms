@@ -2,13 +2,15 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <UserSecretsId>d25179e4-2e99-4808-8a41-c443484f6236</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="6.0.0-preview.3.21201.13" />
         <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.11.0" />
         <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.11.0" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
         <PackageReference Include="MongoDB.Driver" Version="2.13.0-beta1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
         <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.1.4" />
